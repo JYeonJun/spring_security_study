@@ -71,7 +71,11 @@ public class SecurityConfig {
                         .antMatchers("/config").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
-                .formLogin();
+                .formLogin()
+                .loginPage("/login")
+                .loginProcessingUrl("/login_proc")
+                .defaultSuccessUrl("/")
+                .permitAll();
 
 
         return http.build();
